@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Maat Rounded';
+  src: url('/fonts/MaatRoundedFree-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Maat Rounded';
+  src: url('/fonts/MaatRoundedFree-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-maat {
+  font-family: 'Maat Rounded', system-ui, -apple-system, sans-serif;
+} 

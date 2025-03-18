@@ -1,0 +1,1417 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    
+    --card: 222 47% 4%;
+    --card-foreground: 0 0% 100%;
+ 
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+ 
+    --primary: 180 100% 50%;
+    --primary-foreground: 0 0% 0%;
+ 
+    --secondary: 222 47% 4%;
+    --secondary-foreground: 0 0% 100%;
+ 
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 70%;
+ 
+    --accent: 222 47% 4%;
+    --accent-foreground: 0 0% 100%;
+ 
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 27.9% 16.9%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 180 100% 50%;
+ 
+    --radius: 0.5rem;
+    
+    /* NFT Theme Colors */
+    --nft-purple: #9b87f5;
+    --nft-blue: #4462ED;
+    --nft-pink: #FF5FA7;
+    --nft-dark: #0F0F1E;
+    
+    /* Achievement Status Colors */
+    --achievement-notStarted: #6b7280;
+    --achievement-inProgress: #6366f1;
+    --achievement-completed: #10b981;
+    
+    /* NFT Badge Colors */
+    --achievement-common: #6b7280;
+    --achievement-rare: #3b82f6;
+    --achievement-legendary: #8b5cf6;
+    --achievement-platinum: #ec4899;
+    --achievement-silver: #94a3b8;
+    --achievement-gold: #f59e0b;
+    
+    /* Referral CSS Variables */
+    --neft: #3B82F6;
+    --neft-light: #60A5FA;
+    --neft-dark: #2563EB;
+    --secondary: rgba(217, 217, 217, 0.2);
+    --secondary-foreground: rgba(217, 217, 217, 0.5);
+    --border: rgba(255, 255, 255, 0.1);
+    --card: rgba(255, 255, 255, 0.05);
+    --muted-foreground: rgba(255, 255, 255, 0.6);
+    
+    /* Leaderboard Neon Colors */
+    --neon-blue: #36f9f6;
+    --neon-purple: #8b5cf6;
+    --neon-pink: #ec4899;
+    --neon-green: #4ade80;
+    --neon-red: #ef4444;
+    --neon-yellow: #eab308;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    @apply scroll-smooth bg-[#111111];
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-medium tracking-tight;
+  }
+
+  /* Typography styles */
+  .display {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight;
+  }
+
+  .title {
+    @apply text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight;
+  }
+
+  .subtitle {
+    @apply text-xl sm:text-2xl md:text-3xl font-normal;
+  }
+
+  .body-large {
+    @apply text-lg font-normal leading-relaxed;
+  }
+
+  .body {
+    @apply text-base font-normal leading-relaxed;
+  }
+
+  .caption {
+    @apply text-sm font-normal text-muted-foreground;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  }
+
+  .frosted-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+
+  .step-card {
+    @apply p-6 rounded-2xl backdrop-blur-xl border border-white/10 bg-white/5 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/20;
+  }
+
+  .tier-card {
+    @apply p-6 rounded-2xl backdrop-blur-xl border border-white/10 bg-white/5 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/20 flex flex-col items-center;
+  }
+
+  .feature-card {
+    @apply p-8 rounded-2xl backdrop-blur-xl border border-white/10 bg-white/5 transition-all duration-500 hover:shadow-lg hover:shadow-[#00ffff]/10 hover:border-[#00ffff]/20 hover:-translate-y-1 flex flex-col items-center relative overflow-hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-[#00ffff]/5 to-purple-500/5 opacity-0 transition-opacity duration-500;
+  }
+
+  .feature-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .feature-card::after {
+    content: '';
+    @apply absolute -inset-px bg-gradient-to-br from-[#00ffff]/10 to-purple-500/10 rounded-2xl opacity-0 transition-opacity duration-500;
+  }
+
+  .feature-card:hover::after {
+    @apply opacity-100;
+  }
+
+  .benefit-chip {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-white;
+  }
+
+  .container-custom {
+    @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00ffff] to-purple-500;
+  }
+
+  .neo-blur {
+    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-black/20;
+  }
+  
+  .glass-morphism {
+    @apply backdrop-blur-xl bg-[#111111]/5 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
+  }
+
+  .gradient-border {
+    @apply relative before:absolute before:-inset-[1px] before:rounded-[inherit] before:p-[1px] before:bg-gradient-to-r before:from-purple-500/50 before:via-transparent before:to-blue-500/50 before:-z-10;
+  }
+  
+  /* Leaderboard Button styles */
+  .neon-button {
+    @apply relative px-6 py-2 rounded-md overflow-hidden transition-all duration-300 
+          bg-transparent border border-neon-blue/70 text-white shadow-[0_0_10px_rgba(54,249,246,0.3)]
+          hover:shadow-[0_0_20px_rgba(54,249,246,0.5)] hover:text-neon-blue 
+          focus:outline-none focus:ring-2 focus:ring-neon-blue/50 focus:ring-opacity-50;
+  }
+
+  .neon-button::before {
+    content: '';
+    @apply absolute inset-0 w-full h-full bg-neon-glow opacity-0 transition-opacity duration-300;
+  }
+
+  .neon-button:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Trophy glow effects */
+  .trophy-gold {
+    @apply shadow-[0_0_15px_rgba(234,179,8,0.5)] text-yellow-400;
+  }
+
+  .trophy-silver {
+    @apply shadow-[0_0_15px_rgba(148,163,184,0.5)] text-slate-300;
+  }
+
+  .trophy-bronze {
+    @apply shadow-[0_0_15px_rgba(180,83,9,0.5)] text-amber-700;
+  }
+
+  .hero-section {
+    @apply relative min-h-[90vh] px-6 py-24 md:py-32 flex flex-col justify-center items-center text-center overflow-hidden;
+    background: #0A0B13;
+  }
+  
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-4;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl text-foreground/70;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-foreground/70;
+  }
+  
+  .step-card {
+    @apply relative p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card {
+    @apply p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card-inner {
+    @apply space-y-4;
+  }
+  
+  .glass-card {
+    @apply bg-[#111827]/60 backdrop-blur-lg border border-[#1F2937] rounded-xl shadow-lg;
+  }
+  
+  .progress-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .progress-bar-fill {
+    @apply h-full rounded-full;
+  }
+  
+  .reward-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .reward-bar-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-neon-blue to-neon-purple;
+  }
+  
+  .alert-banner {
+    @apply p-4 rounded-lg border border-red-500/50 bg-red-500/10 text-white flex items-center gap-3;
+  }
+  
+  .achievement-icon {
+    position: relative;
+  }
+
+  .achievement-icon::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #00ffff, rgba(168, 85, 247, 0.4));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  .card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+  
+  /* Achievement Status Colors */
+  .text-achievement-completed {
+    @apply text-green-400;
+  }
+
+  .text-achievement-inProgress {
+    @apply text-yellow-400;
+  }
+
+  .text-achievement-common {
+    @apply text-gray-400;
+  }
+
+  .text-achievement-rare {
+    @apply text-blue-400;
+  }
+
+  .text-achievement-legendary {
+    @apply text-purple-400;
+  }
+
+  .text-achievement-platinum {
+    @apply text-cyan-400;
+  }
+
+  .text-achievement-silver {
+    @apply text-slate-400;
+  }
+
+  .text-achievement-gold {
+    @apply text-yellow-400;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+  
+  /* Button Hover Effects */
+  .btn-glow {
+    position: relative;
+  }
+
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    @apply bg-[#00ffff];
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  .btn-glow:hover::after {
+    opacity: 0.3;
+  }
+  
+  /* Card Hover Effects */
+  .hover-card-glow {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .hover-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    @apply bg-gradient-to-r from-[#00ffff] to-purple-500;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-card-glow:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-card-glow:hover::before {
+    opacity: 0.3;
+  }
+
+  .glow-line {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+  }
+
+  .hover-card-glow {
+    position: relative;
+  }
+
+  .hover-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2));
+    border-radius: inherit;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .hover-card-glow::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    z-index: -1;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 255, 0.1), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .hover-card-glow:hover::after {
+    opacity: 1;
+  }
+  
+  /* Trophy glow effects */
+  .trophy-gold {
+    @apply shadow-[0_0_15px_rgba(234,179,8,0.5)] text-yellow-400;
+  }
+
+  .trophy-silver {
+    @apply shadow-[0_0_15px_rgba(148,163,184,0.5)] text-slate-300;
+  }
+
+  .trophy-bronze {
+    @apply shadow-[0_0_15px_rgba(180,83,9,0.5)] text-amber-700;
+  }
+
+  .hero-section {
+    @apply relative min-h-[90vh] px-6 py-24 md:py-32 flex flex-col justify-center items-center text-center overflow-hidden;
+    background: #0A0B13;
+  }
+  
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-4;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl text-foreground/70;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-foreground/70;
+  }
+  
+  .step-card {
+    @apply relative p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card {
+    @apply p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card-inner {
+    @apply space-y-4;
+  }
+  
+  .glass-card {
+    @apply bg-[#111827]/60 backdrop-blur-lg border border-[#1F2937] rounded-xl shadow-lg;
+  }
+  
+  .progress-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .progress-bar-fill {
+    @apply h-full rounded-full;
+  }
+  
+  .reward-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .reward-bar-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-neon-blue to-neon-purple;
+  }
+  
+  .alert-banner {
+    @apply p-4 rounded-lg border border-red-500/50 bg-red-500/10 text-white flex items-center gap-3;
+  }
+  
+  .achievement-icon {
+    position: relative;
+  }
+
+  .achievement-icon::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #00ffff, rgba(168, 85, 247, 0.4));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  .card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+  
+  /* Achievement Status Colors */
+  .text-achievement-completed {
+    @apply text-green-400;
+  }
+
+  .text-achievement-inProgress {
+    @apply text-yellow-400;
+  }
+
+  .text-achievement-common {
+    @apply text-gray-400;
+  }
+
+  .text-achievement-rare {
+    @apply text-blue-400;
+  }
+
+  .text-achievement-legendary {
+    @apply text-purple-400;
+  }
+
+  .text-achievement-platinum {
+    @apply text-cyan-400;
+  }
+
+  .text-achievement-silver {
+    @apply text-slate-400;
+  }
+
+  .text-achievement-gold {
+    @apply text-yellow-400;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+  
+  /* Button Hover Effects */
+  .btn-glow {
+    position: relative;
+  }
+
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    @apply bg-[#00ffff];
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  .btn-glow:hover::after {
+    opacity: 0.3;
+  }
+  
+  /* Card Hover Effects */
+  .hover-card-glow {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .hover-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    @apply bg-gradient-to-r from-[#00ffff] to-purple-500;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-card-glow:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-card-glow:hover::before {
+    opacity: 0.3;
+  }
+
+  .hover-card-glow {
+    @apply relative before:absolute before:inset-0 before:rounded-2xl before:p-[1px] before:bg-gradient-to-r before:from-[#00ffff]/50 before:via-transparent before:to-purple-500/50 before:-z-10;
+  }
+
+  .glow-line {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+  }
+
+  .btn-glow {
+    @apply relative before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-gradient-to-r before:from-[#00ffff]/50 before:via-transparent before:to-purple-500/50 before:-z-10 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)];
+  }
+  
+  /* Trophy glow effects */
+  .trophy-gold {
+    @apply shadow-[0_0_15px_rgba(234,179,8,0.5)] text-yellow-400;
+  }
+
+  .trophy-silver {
+    @apply shadow-[0_0_15px_rgba(148,163,184,0.5)] text-slate-300;
+  }
+
+  .trophy-bronze {
+    @apply shadow-[0_0_15px_rgba(180,83,9,0.5)] text-amber-700;
+  }
+
+  .hero-section {
+    @apply relative min-h-[90vh] px-6 py-24 md:py-32 flex flex-col justify-center items-center text-center overflow-hidden;
+    background: #0A0B13;
+  }
+  
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-4;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl text-foreground/70;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-foreground/70;
+  }
+  
+  .step-card {
+    @apply relative p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card {
+    @apply p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card-inner {
+    @apply space-y-4;
+  }
+  
+  .glass-card {
+    @apply bg-[#111827]/60 backdrop-blur-lg border border-[#1F2937] rounded-xl shadow-lg;
+  }
+  
+  .progress-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .progress-bar-fill {
+    @apply h-full rounded-full;
+  }
+  
+  .reward-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .reward-bar-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-neon-blue to-neon-purple;
+  }
+  
+  .alert-banner {
+    @apply p-4 rounded-lg border border-red-500/50 bg-red-500/10 text-white flex items-center gap-3;
+  }
+  
+  .achievement-icon {
+    position: relative;
+  }
+
+  .achievement-icon::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #00ffff, rgba(168, 85, 247, 0.4));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  .card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+  
+  /* Achievement Status Colors */
+  .text-achievement-completed {
+    @apply text-green-400;
+  }
+
+  .text-achievement-inProgress {
+    @apply text-yellow-400;
+  }
+
+  .text-achievement-common {
+    @apply text-gray-400;
+  }
+
+  .text-achievement-rare {
+    @apply text-blue-400;
+  }
+
+  .text-achievement-legendary {
+    @apply text-purple-400;
+  }
+
+  .text-achievement-platinum {
+    @apply text-cyan-400;
+  }
+
+  .text-achievement-silver {
+    @apply text-slate-400;
+  }
+
+  .text-achievement-gold {
+    @apply text-yellow-400;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+  
+  /* Button Hover Effects */
+  .btn-glow {
+    position: relative;
+  }
+
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    @apply bg-[#00ffff];
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  .btn-glow:hover::after {
+    opacity: 0.3;
+  }
+  
+  /* Card Hover Effects */
+  .hover-card-glow {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .hover-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    @apply bg-gradient-to-r from-[#00ffff] to-purple-500;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-card-glow:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-card-glow:hover::before {
+    opacity: 0.3;
+  }
+
+  .glow-line {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+  }
+
+  .hover-card-glow {
+    position: relative;
+  }
+
+  .hover-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2));
+    border-radius: inherit;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .hover-card-glow::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    z-index: -1;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 255, 0.1), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .hover-card-glow:hover::after {
+    opacity: 1;
+  }
+  
+  /* Trophy glow effects */
+  .trophy-gold {
+    @apply shadow-[0_0_15px_rgba(234,179,8,0.5)] text-yellow-400;
+  }
+
+  .trophy-silver {
+    @apply shadow-[0_0_15px_rgba(148,163,184,0.5)] text-slate-300;
+  }
+
+  .trophy-bronze {
+    @apply shadow-[0_0_15px_rgba(180,83,9,0.5)] text-amber-700;
+  }
+
+  .hero-section {
+    @apply relative min-h-[90vh] px-6 py-24 md:py-32 flex flex-col justify-center items-center text-center overflow-hidden;
+    background: #0A0B13;
+  }
+  
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-4;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl text-foreground/70;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-foreground/70;
+  }
+  
+  .step-card {
+    @apply relative p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card {
+    @apply p-6 bg-[#111827]/60 backdrop-blur-md border border-[#1F2937] rounded-xl transition-all duration-300;
+  }
+  
+  .nft-card-inner {
+    @apply space-y-4;
+  }
+  
+  .glass-card {
+    @apply bg-[#111827]/60 backdrop-blur-lg border border-[#1F2937] rounded-xl shadow-lg;
+  }
+  
+  .progress-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .progress-bar-fill {
+    @apply h-full rounded-full;
+  }
+  
+  .reward-bar {
+    @apply h-3 bg-[#1F2937] rounded-full overflow-hidden;
+  }
+  
+  .reward-bar-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-neon-blue to-neon-purple;
+  }
+  
+  .alert-banner {
+    @apply p-4 rounded-lg border border-red-500/50 bg-red-500/10 text-white flex items-center gap-3;
+  }
+  
+  .achievement-icon {
+    position: relative;
+  }
+
+  .achievement-icon::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #00ffff, rgba(168, 85, 247, 0.4));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  .card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+  
+  /* Achievement Status Colors */
+  .text-achievement-completed {
+    @apply text-green-400;
+  }
+
+  .text-achievement-inProgress {
+    @apply text-yellow-400;
+  }
+
+  .text-achievement-common {
+    @apply text-gray-400;
+  }
+
+  .text-achievement-rare {
+    @apply text-blue-400;
+  }
+
+  .text-achievement-legendary {
+    @apply text-purple-400;
+  }
+
+  .text-achievement-platinum {
+    @apply text-cyan-400;
+  }
+
+  .text-achievement-silver {
+    @apply text-slate-400;
+  }
+
+  .text-achievement-gold {
+    @apply text-yellow-400;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+  
+  /* Button Hover Effects */
+  .btn-glow {
+    position: relative;
+  }
+
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    @apply bg-[#00ffff];
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  .btn-glow:hover::after {
+    opacity: 0.3;
+  }
+  
+  /* Card Hover Effects */
+  .hover-card-glow {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .hover-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    @apply bg-gradient-to-r from-[#00ffff] to-purple-500;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-card-glow:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-card-glow:hover::before {
+    opacity: 0.3;
+  }
+}
+
+/* Observer animations for scrolling */
+.hidden-element {
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.show-element {
+  opacity: 1;
+}
+
+.slide-from-left {
+  transform: translateX(-70px);
+}
+
+.slide-from-right {
+  transform: translateX(70px);
+}
+
+.slide-from-bottom {
+  transform: translateY(50px);
+}
+
+.slide-normal {
+  transform: translate(0);
+}
+
+/* Hover animations */
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-[1.02];
+}
+
+/* Gradient overlays */
+.card-gradient {
+  @apply bg-gradient-to-t from-[#111111]/80 via-[#111111]/50 to-transparent;
+}
+
+/* Hero glow and particle effects */
+.hero-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(93, 83, 255, 0.15) 0%, rgba(40, 38, 89, 0.05) 25%, rgba(0, 0, 0, 0) 50%);
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.gradient-blur {
+  position: absolute;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.4;
+  transition: all 0.5s ease;
+  border-radius: 50%;
+}
+
+/* Background grid overlay */
+.bg-grid {
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-position: top center;
+  image-rendering: pixelated;
+}
+
+/* Animation delays */
+.delay-1 { transition-delay: 100ms; }
+.delay-2 { transition-delay: 200ms; }
+.delay-3 { transition-delay: 300ms; }
+.delay-4 { transition-delay: 400ms; }
+.delay-5 { transition-delay: 500ms; }
+.delay-6 { transition-delay: 600ms; }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Landing page specific animations */
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer specific styles */
+.footer-link-hover {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer-link-hover:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--nft-purple);
+  transition: width 0.3s ease;
+}
+
+.footer-link-hover:hover:after {
+  width: 100%;
+}
+
+/* Custom Achievement CSS */
+.text-achievement-notStarted { color: var(--achievement-notStarted); }
+.text-achievement-inProgress { color: var(--achievement-inProgress); }
+.text-achievement-completed { color: var(--achievement-completed); }
+
+.text-achievement-common { color: var(--achievement-common); }
+.text-achievement-rare { color: var(--achievement-rare); }
+.text-achievement-legendary { color: var(--achievement-legendary); }
+.text-achievement-platinum { color: var(--achievement-platinum); }
+.text-achievement-silver { color: var(--achievement-silver); }
+.text-achievement-gold { color: var(--achievement-gold); }
+
+.bg-achievement-notStarted { background-color: var(--achievement-notStarted); }
+.bg-achievement-inProgress { background-color: var(--achievement-inProgress); }
+.bg-achievement-completed { background-color: var(--achievement-completed); }
+
+.bg-achievement-common { background-color: var(--achievement-common); }
+.bg-achievement-rare { background-color: var(--achievement-rare); }
+.bg-achievement-legendary { background-color: var(--achievement-legendary); }
+.bg-achievement-platinum { background-color: var(--achievement-platinum); }
+.bg-achievement-silver { background-color: var(--achievement-silver); }
+.bg-achievement-gold { background-color: var(--achievement-gold); }
+
+/* Achievement Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Achievement Card */
+.achievement-card {
+  background: rgba(28, 28, 38, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Card Effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: var(--progress-width, 0%);
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+/* Animated Pulse for Loading */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Leaderboard specific styles */
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+  }
+  50% { 
+    opacity: 0.8;
+    filter: brightness(1.2) blur(1px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.text-neon-blue { color: var(--neon-blue); }
+.text-neon-green { color: var(--neon-green); }
+.text-neon-red { color: var(--neon-red); }
+.text-neon-purple { color: var(--neon-purple); }
+.text-neon-pink { color: var(--neon-pink); }
+
+.bg-neon-blue { background-color: var(--neon-blue); }
+.bg-neon-green { background-color: var(--neon-green); }
+.bg-neon-red { background-color: var(--neon-red); }
+.bg-neon-blue\/5 { background-color: color-mix(in srgb, var(--neon-blue) 5%, transparent); }
+.bg-neon-blue\/20 { background-color: color-mix(in srgb, var(--neon-blue) 20%, transparent); }
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border-radius: inherit;
+  box-shadow: 0 0 8px 1px rgba(54, 249, 246, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.neon-border:hover::after {
+  opacity: 1;
+}
+
+.bg-neon-glow {
+  background: linear-gradient(90deg, rgba(54, 249, 246, 0) 0%, rgba(54, 249, 246, 0.3) 50%, rgba(54, 249, 246, 0) 100%);
+}
+
+.bg-gradient-radial {
+  background-image: radial-gradient(circle at 50% 0%, var(--tw-gradient-stops));
+}
+
+@layer utilities {
+  /* Float and sink animations for rank changes */
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @keyframes sink-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(2px);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 2s ease-in-out infinite;
+  }
+
+  .animate-sink-slow {
+    animation: sink-slow 2s ease-in-out infinite;
+  }
+}
