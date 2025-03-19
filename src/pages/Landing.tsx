@@ -40,7 +40,7 @@ const nfts = [
     id: 1,
     name: "Fierce Euphoria",
     description: "Bold Energy, Dopamine Rush, Unmatched Spark",
-    image: "/nft sample images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif",
+    image: "nft sample images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif",
   },
   {
     id: 2,
