@@ -40,31 +40,31 @@ const nfts = [
     id: 1,
     name: "Fierce Euphoria",
     description: "Bold Energy, Dopamine Rush, Unmatched Spark",
-    image: "/nft sample images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif",
+    image: "/images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif",
   },
   {
     id: 2,
     name: "Digital Apex",
     description: "Supreme Power, Digital Dominance, Future Elite",
-    image: "/nft sample images/crypto-bear-boss-cool-teddy-with-bling_1173476-4666.jpg",
+    image: "/images/crypto-bear-boss-cool-teddy-with-bling_1173476-4666.jpg",
   },
   {
     id: 3,
     name: "Cosmic Flow",
     description: "Celestial Energy, Infinite Potential, Star Power",
-    image: "/nft sample images/gradient-galaxy-background_52683-140335.avif",
+    image: "/images/gradient-galaxy-background_52683-140335.avif",
   },
   {
     id: 4,
     name: "Neon Dynasty",
     description: "Electric Aura, Cyber Supremacy, Digital Legacy",
-    image: "/nft sample images/hand-drawn-nft-style-ape-illustration_23-2149611030.avif",
+    image: "/images/hand-drawn-nft-style-ape-illustration_23-2149611030.avif",
   },
   {
     id: 5,
     name: "Meta Sovereign",
     description: "Virtual Royalty, Web3 Pioneer, Digital Immortality",
-    image: "/nft sample images/hand-drawn-nft-style-ape-illustration_23-2149622024.avif",
+    image: "/images/hand-drawn-nft-style-ape-illustration_23-2149622024.avif",
   }
 ];
 
@@ -493,9 +493,9 @@ const Landing: React.FC = () => {
             {lovableFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="group relative"
               >
@@ -525,9 +525,9 @@ const Landing: React.FC = () => {
       <div className="relative py-32">
         <div className="container mx-auto px-4">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white font-maat">
@@ -608,7 +608,7 @@ const Landing: React.FC = () => {
                 </p>
                 <div className="pt-4">
                   <Link to="/explore">
-                    <Button
+                    <Button 
                       size="lg"
                       className="bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-medium px-8 py-6 text-lg rounded-full hover:opacity-90 transition-all duration-300 transform hover:scale-105"
                     >
@@ -627,7 +627,7 @@ const Landing: React.FC = () => {
               >
                 <div className="relative rounded-3xl overflow-hidden aspect-square">
                   <img 
-                    src="/nft sample images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif"
+                    src="/images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif"
                     alt="Featured NFT"
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                   />
@@ -750,9 +750,9 @@ const Landing: React.FC = () => {
                   </Button>
                 </Link>
               </div>
-            </motion.div>
-          </div>
-        </div>
+                </motion.div>
+              </div>
+            </div>
       </div>
     </div>
   );

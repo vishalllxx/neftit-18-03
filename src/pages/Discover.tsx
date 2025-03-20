@@ -7,6 +7,7 @@ import { featuredProjects } from "@/data/nftProjects";
 import { Sparkles, Clock, TrendingUp, Gem, Filter, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import "@/styles/fonts.css";
 
 const Discover = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +17,7 @@ const Discover = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -59,14 +60,14 @@ const Discover = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#000000] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-black"></div>
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+    <div className="min-h-screen bg-[#030407] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-[#030407] to-[#030407]"></div>
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
       <MainNav />
       <main className="container relative mx-auto px-4 pt-24 pb-12 space-y-16">
         {/* Header Section */}
         <div className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+          <h1 className="text-5xl md:text-6xl font-bold text-white font-maat">
             Discover Web3 Projects
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
@@ -79,7 +80,7 @@ const Discover = () => {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-white/20 hover:bg-white/10 transition-all duration-300 hover:transform hover:scale-[1.02]"
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 hover:border-white/20 hover:bg-white/10 transition-all duration-300 hover:transform hover:scale-[1.02]"
             >
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-xl bg-white/5">
@@ -87,7 +88,7 @@ const Discover = () => {
                 </div>
                 <div>
                   <div className="text-sm text-white/70">{stat.label}</div>
-                  <div className="text-2xl font-bold text-white mt-1 bg-clip-text bg-gradient-to-r from-white to-white/90">
+                  <div className="text-2xl font-bold text-white mt-1">
                     {stat.value}
                   </div>
                   <div className="text-sm text-white/60 mt-1">{stat.description}</div>
@@ -103,7 +104,7 @@ const Discover = () => {
             <SearchSection onSearch={handleSearch} />
             <div className="flex items-center gap-4">
               <Tabs defaultValue={selectedCategory} onValueChange={setSelectedCategory} className="w-full md:w-auto">
-                <TabsList className="bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                <TabsList className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300">
                   {categories.map(category => (
                     <TabsTrigger
                       key={category.id}
@@ -135,7 +136,7 @@ const Discover = () => {
             </Button>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 hover:border-white/20 transition-all duration-300">
             <NFTGrid projects={featuredProjects} isLoading={isLoading} />
           </div>
         </div>

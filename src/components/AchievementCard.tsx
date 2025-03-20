@@ -95,43 +95,29 @@ export function AchievementCard({ achievement }: AchievementCardProps) {
       onHoverEnd={() => setIsHovered(false)}
       className="relative group"
     >
-      {/* Glowing border effect */}
-      <motion.div
-        className={`absolute -inset-0.5 bg-gradient-to-r ${getBadgeStyle(achievement.type)} rounded-xl blur opacity-30 transition duration-300`}
-        animate={{
-          opacity: isHovered ? 0.5 : 0.3,
-          scale: isHovered ? 1.02 : 1,
-        }}
-      />
-      
       {/* Card content */}
-      <div className="relative bg-black p-6 rounded-xl border border-white/10">
+      <div className="relative bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10">
         {/* Achievement Icon & Reward */}
         <div className="flex justify-between items-start mb-6">
           <div className="relative">
-            <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br ${getBadgeStyle(achievement.type)} bg-opacity-20`}>
-              <div className={getTypeColor(achievement.type)}>
+            <div className="w-16 h-16 rounded-xl flex items-center justify-center bg-white/5">
+              <div className="text-white/80">
                 {getTypeIcon(achievement.type)}
               </div>
             </div>
             {achievement.status === 'locked' && (
-              <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gray-900 border border-white/20 flex items-center justify-center">
-                <Lock className="w-3 h-3 text-gray-400" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                <Lock className="w-3 h-3 text-white/60" />
               </div>
             )}
           </div>
           
           {/* Reward Badge */}
-          <motion.div
-            animate={{
-              scale: isHovered ? 1.05 : 1,
-            }}
-            className="flex items-center bg-black px-4 py-2 rounded-full border border-white/10"
-          >
-            <span className="text-base font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#00ffff] to-purple-500">
+          <div className="flex items-center bg-white/5 px-4 py-2 rounded-full border border-white/10">
+            <span className="text-base font-semibold text-white">
               +{achievement.reward} NEFT
             </span>
-          </motion.div>
+          </div>
         </div>
         
         {/* Title & Description */}
@@ -141,10 +127,10 @@ export function AchievementCard({ achievement }: AchievementCardProps) {
               {achievement.title}
             </h3>
             {achievement.status === 'completed' && isClaimed && (
-              <CheckCircle2 className="w-5 h-5 text-green-400" />
+              <CheckCircle2 className="w-5 h-5 text-white/80" />
             )}
           </div>
-          <p className="text-gray-400 leading-relaxed">{achievement.description}</p>
+          <p className="text-white/60 leading-relaxed">{achievement.description}</p>
         </div>
         
         {/* Progress Indicator */}

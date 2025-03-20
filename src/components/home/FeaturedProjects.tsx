@@ -19,33 +19,33 @@ export function FeaturedProjects() {
   const nfts = [
     {
       id: 1,
-      name: "Fierce Euphoria",
-      description: "Bold Energy, Dopamine Rush, Unmatched Spark",
-      image: "/nft sample images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif",
+      name: "Cyber Gorilla",
+      description: "A fierce cybernetic gorilla from the future",
+      image: "/images/cybernetic-gorilla-fierce-futuristic-illustration_477639-6715.avif",
     },
     {
       id: 2,
-      name: "Digital Apex",
-      description: "Supreme Power, Digital Dominance, Future Elite",
-      image: "/nft sample images/crypto-bear-boss-cool-teddy-with-bling_1173476-4666.jpg",
+      name: "Crypto Bear",
+      description: "A cool teddy bear with bling",
+      image: "/images/crypto-bear-boss-cool-teddy-with-bling_1173476-4666.jpg",
     },
     {
       id: 3,
-      name: "Cosmic Flow",
-      description: "Celestial Energy, Infinite Potential, Star Power",
-      image: "/nft sample images/gradient-galaxy-background_52683-140335.avif",
+      name: "Galaxy NFT",
+      description: "A beautiful gradient galaxy background",
+      image: "/images/gradient-galaxy-background_52683-140335.avif",
     },
     {
       id: 4,
-      name: "Neon Dynasty",
-      description: "Electric Aura, Cyber Supremacy, Digital Legacy",
-      image: "/nft sample images/hand-drawn-nft-style-ape-illustration_23-2149611030.avif",
+      name: "Ape Art",
+      description: "Hand-drawn NFT style ape illustration",
+      image: "/images/hand-drawn-nft-style-ape-illustration_23-2149611030.avif",
     },
     {
       id: 5,
-      name: "Meta Sovereign",
-      description: "Virtual Royalty, Web3 Pioneer, Digital Immortality",
-      image: "/nft sample images/hand-drawn-nft-style-ape-illustration_23-2149622024.avif",
+      name: "Ape Collection",
+      description: "Another hand-drawn NFT style ape",
+      image: "/images/hand-drawn-nft-style-ape-illustration_23-2149622024.avif",
     }
   ];
 

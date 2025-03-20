@@ -25,7 +25,7 @@ const Achievements = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
     
     return () => clearTimeout(timer);
   }, []);
@@ -34,20 +34,13 @@ const Achievements = () => {
     return (
       <>
         <MainNav />
-        <div className="min-h-screen flex flex-col items-center justify-center bg-[#000] bg-dot-white/[0.1]">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-[#030407] bg-dot-white/[0.1]">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="flex flex-col items-center"
           >
-            <div className="relative">
-              <Award className="w-16 h-16 text-[#00ffff] animate-pulse" />
-              <motion.div
-                className="absolute -inset-2 bg-[#00ffff]/20 rounded-full blur-xl"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </div>
+            <Award className="w-16 h-16 text-white/80" />
             <h1 className="mt-6 text-2xl font-medium text-white">Loading Achievements...</h1>
           </motion.div>
         </div>
@@ -56,13 +49,15 @@ const Achievements = () => {
   }
   
   return (
-    <>
+    <div className="min-h-screen bg-[#030407] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-[#030407] to-[#030407]"></div>
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
       <MainNav />
-      <div className="min-h-screen bg-[#000] bg-dot-white/[0.1]">
+      <div className="container relative mx-auto px-4 py-12 max-w-6xl pt-24">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="container mx-auto px-4 py-12 max-w-6xl pt-24"
+          className="space-y-8"
         >
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
@@ -73,19 +68,12 @@ const Achievements = () => {
               className="mb-6 md:mb-0"
             >
               <div className="flex items-center gap-4">
-                <div className="relative">
-                  <Award className="w-12 h-12 text-[#00ffff]" />
-                  <motion.div
-                    className="absolute -inset-2 bg-[#00ffff]/20 rounded-full blur-lg"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  />
-                </div>
+                <Award className="w-12 h-12 text-white/80" />
                 <div>
-                  <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00ffff] to-purple-500">
+                  <h1 className="text-4xl font-bold text-white">
                     Achievements
                   </h1>
-                  <p className="text-gray-400 mt-1">
+                  <p className="text-white/60 mt-1">
                     Complete tasks and earn exclusive NEFT rewards
                   </p>
                 </div>
@@ -95,11 +83,11 @@ const Achievements = () => {
             <div className="flex items-center gap-6">
               <div className="text-right">
                 <div className="flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-[#00ffff]" />
-                  <p className="text-2xl font-bold text-white">{completed}<span className="text-gray-400 text-lg"> / {total}</span></p>
+                  <Trophy className="w-5 h-5 text-white/60" />
+                  <p className="text-2xl font-bold text-white">{completed}<span className="text-white/60 text-lg"> / {total}</span></p>
                 </div>
                 <div className="mt-2">
-                  <Progress value={completionPercentage} className="h-2 w-32" />
+                  <Progress value={completionPercentage} className="h-2 w-32 [&>div]:bg-white/20 bg-white/5" />
                 </div>
               </div>
               <HistoryModal achievements={achievements} />
@@ -114,39 +102,36 @@ const Achievements = () => {
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12"
           >
             <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00ffff] to-purple-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-              <div className="relative bg-black p-6 rounded-xl border border-white/10">
+              <div className="relative bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10">
                 <div className="flex items-center gap-4">
-                  <Trophy className="w-8 h-8 text-[#00ffff]" />
+                  <Trophy className="w-8 h-8 text-white/80" />
                   <div>
                     <p className="text-3xl font-bold text-white">{total}</p>
-                    <p className="text-gray-400">Total Achievements</p>
+                    <p className="text-white/60">Total Achievements</p>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-              <div className="relative bg-black p-6 rounded-xl border border-white/10">
+              <div className="relative bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10">
                 <div className="flex items-center gap-4">
-                  <Sparkles className="w-8 h-8 text-green-400" />
+                  <Sparkles className="w-8 h-8 text-white/80" />
                   <div>
                     <p className="text-3xl font-bold text-white">{completed}</p>
-                    <p className="text-gray-400">Completed</p>
+                    <p className="text-white/60">Completed</p>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-              <div className="relative bg-black p-6 rounded-xl border border-white/10">
+              <div className="relative bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10">
                 <div className="flex items-center gap-4">
-                  <Target className="w-8 h-8 text-orange-400" />
+                  <Target className="w-8 h-8 text-white/80" />
                   <div>
                     <p className="text-3xl font-bold text-white">{inProgress}</p>
-                    <p className="text-gray-400">In Progress</p>
+                    <p className="text-white/60">In Progress</p>
                   </div>
                 </div>
               </div>
@@ -168,7 +153,7 @@ const Achievements = () => {
           </AnimatePresence>
         </motion.div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Trophy, Gift, Flame, Clock, Filter, ChevronRight } from "lucide-react";
+import { Trophy, Gift, Flame, Filter, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import "@/styles/fonts.css";
 
 // Types for our activity data
 type ActivityType = "task" | "claim" | "burn";
@@ -95,58 +96,39 @@ const Activity = () => {
   const getActivityIcon = (type: ActivityType) => {
     switch (type) {
       case "task":
-        return <Trophy className="h-5 w-5 text-purple-500" />;
+        return <Trophy className="h-5 w-5 text-white" />;
       case "claim":
-        return <Gift className="h-5 w-5 text-blue-500" />;
+        return <Gift className="h-5 w-5 text-white" />;
       case "burn":
-        return <Flame className="h-5 w-5 text-orange-500" />;
+        return <Flame className="h-5 w-5 text-white" />;
       default:
-        return <Clock className="h-5 w-5 text-gray-500" />;
-    }
-  };
-
-  // Get background color for activity type
-  const getActivityBg = (type: ActivityType) => {
-    switch (type) {
-      case "task":
-        return "bg-purple-500/10";
-      case "claim":
-        return "bg-blue-500/10";
-      case "burn":
-        return "bg-orange-500/10";
-      default:
-        return "bg-gray-500/10";
+        return <ChevronRight className="h-5 w-5 text-white" />;
     }
   };
 
   return (
-    <Layout className="bg-gradient-to-b from-[#0A0A0F] to-[#1A1A1F]">
-      <div className="h-[calc(100vh-72px)] flex flex-col">
+    <Layout className="bg-[#030407]">
+      <div className="h-full flex flex-col">
         <div className="container max-w-4xl mx-auto px-4 flex flex-col h-full">
           {/* Header */}
-          <div className="flex flex-col items-start mb-6 sticky top-0 z-10 py-4 -mx-4 px-4 bg-gradient-to-b from-[#0A0A0F] via-[#0A0A0F]/95 to-transparent backdrop-blur-sm">
-            <div className="relative w-full mb-4">
-              <div className="absolute -top-8 -left-2 w-24 h-24 bg-purple-500/20 rounded-full blur-3xl" />
-              <div className="absolute -top-8 left-16 w-24 h-24 bg-blue-500/20 rounded-full blur-3xl" />
-              <div className="absolute -top-8 left-32 w-24 h-24 bg-orange-500/20 rounded-full blur-3xl" />
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent relative leading-tight">
-                Activity Log
-              </h1>
-              <p className="text-white/60 text-lg mt-2 relative">Track your journey in the NEFTIT ecosystem</p>
-            </div>
+          <div className="flex flex-col items-start mb-6 py-4">
+            <h1 className="text-5xl font-bold text-white font-maat mb-2">
+              Activity Log
+            </h1>
+            <p className="text-white/70 text-lg mb-4">Track your journey in the NEFTIT ecosystem</p>
 
             {/* Quick Stats */}
-            <div className="flex items-center gap-6 relative">
+            <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-purple-500" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
                 <span className="text-white/60 text-sm">{taskCount} Tasks</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-blue-500" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
                 <span className="text-white/60 text-sm">{claimCount} Claims</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-orange-500" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
                 <span className="text-white/60 text-sm">{burnCount} Burns</span>
               </div>
             </div>
@@ -157,39 +139,27 @@ const Activity = () => {
               {/* Activity Stats Summary */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <StatCard 
-                  icon={<Trophy className="h-6 w-6 text-purple-500" />}
+                  icon={<Trophy className="h-6 w-6 text-white" />}
                   title="Tasks Completed"
                   value={taskCount.toString()}
-                  bgColor="bg-black/40"
-                  borderColor="border-purple-500/20"
-                  gradientFrom="from-purple-500/10"
-                  gradientTo="to-purple-500/5"
                   description="Quests and challenges completed"
                 />
                 <StatCard 
-                  icon={<Gift className="h-6 w-6 text-blue-500" />}
+                  icon={<Gift className="h-6 w-6 text-white" />}
                   title="NFTs Claimed"
                   value={claimCount.toString()}
-                  bgColor="bg-black/40"
-                  borderColor="border-blue-500/20"
-                  gradientFrom="from-blue-500/10"
-                  gradientTo="to-blue-500/5"
                   description="Unique NFTs in your collection"
                 />
                 <StatCard 
-                  icon={<Flame className="h-6 w-6 text-orange-500" />}
+                  icon={<Flame className="h-6 w-6 text-white" />}
                   title="NFTs Burned"
                   value={burnCount.toString()}
-                  bgColor="bg-black/40"
-                  borderColor="border-orange-500/20"
-                  gradientFrom="from-orange-500/10"
-                  gradientTo="to-orange-500/5"
                   description="NFTs burned for upgrades"
                 />
               </div>
 
               {/* Filter Buttons */}
-              <div className="flex flex-wrap items-center gap-2 bg-black/20 p-4 rounded-xl border border-white/5">
+              <div className="flex flex-wrap items-center gap-2 bg-white/5 p-4 rounded-xl border border-white/10">
                 <div className="flex items-center mr-4">
                   <Filter className="h-4 w-4 text-white/60 mr-2" />
                   <span className="text-sm font-medium text-white/80">Filter by:</span>
@@ -205,7 +175,6 @@ const Activity = () => {
                     active={filter === "task"} 
                     onClick={() => setFilter("task")}
                     icon={<Trophy className="h-4 w-4" />}
-                    color="purple"
                   >
                     Tasks
                   </FilterButton>
@@ -213,7 +182,6 @@ const Activity = () => {
                     active={filter === "claim"} 
                     onClick={() => setFilter("claim")}
                     icon={<Gift className="h-4 w-4" />}
-                    color="blue"
                   >
                     Claims
                   </FilterButton>
@@ -221,7 +189,6 @@ const Activity = () => {
                     active={filter === "burn"} 
                     onClick={() => setFilter("burn")}
                     icon={<Flame className="h-4 w-4" />}
-                    color="orange"
                   >
                     Burns
                   </FilterButton>
@@ -233,11 +200,11 @@ const Activity = () => {
                 {filteredActivities.map((activity) => (
                   <div
                     key={activity.id}
-                    className="flex items-center gap-4 p-4 bg-black/20 hover:bg-white/5 rounded-lg border border-white/5 transition-colors group cursor-pointer"
+                    className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 transition-colors group cursor-pointer"
                   >
                     <div className={cn(
                       "flex-shrink-0 p-2 rounded-full transition-colors",
-                      getActivityBg(activity.type)
+                      "bg-white/10"
                     )}>
                       {getActivityIcon(activity.type)}
                     </div>
@@ -269,32 +236,16 @@ const StatCard = ({
   icon, 
   title, 
   value,
-  description,
-  bgColor = "bg-black/40",
-  borderColor = "border-white/10",
-  gradientFrom = "from-white/5",
-  gradientTo = "to-transparent"
+  description
 }: { 
   icon: React.ReactNode; 
   title: string; 
   value: string;
   description: string;
-  bgColor?: string;
-  borderColor?: string;
-  gradientFrom?: string;
-  gradientTo?: string;
 }) => {
   return (
-    <Card className={cn(
-      "border backdrop-blur-xl group hover:border-white/20 transition-colors duration-300",
-      bgColor,
-      borderColor
-    )}>
-      <CardContent className={cn(
-        "p-6 bg-gradient-to-br",
-        gradientFrom,
-        gradientTo
-      )}>
+    <Card className="border backdrop-blur-xl group hover:border-white/20 transition-colors duration-300 bg-white/5 border-white/10">
+      <CardContent className="p-6 bg-gradient-to-br from-white/10 to-white/5">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
             {icon}
@@ -315,29 +266,18 @@ const FilterButton = ({
   children, 
   active, 
   onClick,
-  icon,
-  color = "white"
+  icon
 }: { 
   children: React.ReactNode; 
   active: boolean; 
   onClick: () => void;
   icon?: React.ReactNode;
-  color?: "white" | "purple" | "blue" | "orange";
 }) => {
   const getColorClasses = () => {
     const baseClasses = "px-3 py-1.5 text-sm rounded-lg flex items-center gap-2 transition-all duration-200";
     
     if (active) {
-      switch (color) {
-        case "purple":
-          return cn(baseClasses, "bg-purple-500/20 text-purple-500 border-purple-500/30");
-        case "blue":
-          return cn(baseClasses, "bg-blue-500/20 text-blue-500 border-blue-500/30");
-        case "orange":
-          return cn(baseClasses, "bg-orange-500/20 text-orange-500 border-orange-500/30");
-        default:
-          return cn(baseClasses, "bg-white/10 text-white border-white/20");
-      }
+      return cn(baseClasses, "bg-white/10 text-white border-white/20");
     }
 
     return cn(
